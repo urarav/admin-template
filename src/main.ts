@@ -2,7 +2,7 @@ import './styles/index.scss'
 import 'modern-css-reset'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import store from './stores/index'
 
 import App from './App.vue'
 import router from './router'
@@ -12,7 +12,7 @@ import 'element-plus/dist/index.css'
 
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(store)
 app.use(router)
 
 app.use(ElementPlus)

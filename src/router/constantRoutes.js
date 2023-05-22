@@ -1,8 +1,5 @@
-import type { RouteRecordRaw } from "vue-router";
-
-const Layout = () => import('@/layout/index.vue')
-
-const constantRoutes: RouteRecordRaw[] = [
+const Layout = () => import('@/layout/index.vue');
+const constantRoutes = [
     {
         path: '/',
         name: 'index',
@@ -51,6 +48,5 @@ const constantRoutes: RouteRecordRaw[] = [
         path: '/:pathMatch(.*)*',
         component: () => import('@/views/error-page/404.vue')
     }
-]
-
-export default constantRoutes
+];
+export default constantRoutes;
