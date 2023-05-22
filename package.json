@@ -7,9 +7,16 @@
     "email": "2205451086@qq.com"
   },
   "description": "a template supported by ts & vue3.x based on vue-element-admin",
-  "keywords": ["vue", "typescript", "vue-router", "pinia", "elementplus", "vite"],
+  "keywords": [
+    "vue",
+    "typescript",
+    "vue-router",
+    "pinia",
+    "elementplus",
+    "vite"
+  ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -20,6 +27,7 @@
   "dependencies": {
     "element-plus": "^2.3.5",
     "modern-css-reset": "^1.4.0",
+    "path-browserify": "^1.0.1",
     "pinia": "^2.0.36",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
@@ -28,7 +36,7 @@
     "@iconify-json/ep": "^1.1.10",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
-    "@types/node": "^18.16.8",
+    "@types/path-browserify": "^1.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/eslint-config-prettier": "^7.1.0",

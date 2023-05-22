@@ -6,7 +6,7 @@
   display: flex;
 
   .app-sidebar {
-    width: $sidebarWidth;
+    width: $sideBarWidth;
     background-color: $menuBg;
   }
 
@@ -16,8 +16,12 @@
     flex-direction: column;
 
     &__navbar {
-      height: $navbarHeight;
+      height: $navBarHeight;
       background-color: $green;
+    }
+
+    &__content {
+      overflow: hidden;
     }
   }
 }

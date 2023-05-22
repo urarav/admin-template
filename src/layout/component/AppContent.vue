@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view v-slot="{ Component }">
-      <transition>
+      <transition name="fade-transform" mode="out-in" appear>
         <keep-alive>
           <component :is="Component" />
         </keep-alive>

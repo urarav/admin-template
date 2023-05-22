@@ -2,12 +2,14 @@
   <div v-if="!item.hidden">
     <template v-if="isMenuItem">
       <template v-if="onlyOneChild && onlyOneChild.meta">
-        <el-menu-item :index="onlyOneChild.path">
-          <el-icon>
-            <i-ep-setting />
-          </el-icon>
-          <span>{{ onlyOneChild.meta?.title }}</span>
-        </el-menu-item>
+        <navigate-link :to="methods.resolvePath(onlyOneChild.path)">
+          <el-menu-item :index="methods.resolvePath(onlyOneChild.path)">
+            <el-icon>
+              <i-ep-setting />
+            </el-icon>
+            <span>{{ onlyOneChild.meta?.title }}</span>
+          </el-menu-item>
+        </navigate-link>
       </template>
     </template>
 
@@ -19,15 +21,24 @@
         <span v-if="item.meta">{{ item.meta.title }}</span>
       </template>
 
-      <sidebar-item :item="it" v-for="it in item.children" :key="it.path" />
+      <sidebar-item
+          :item="it"
+          v-for="it in item.children"
+          :key="it.path"
+          :base-path="methods.resolvePath(it.path)"
+      />
     </el-sub-menu>
   </div>
 </template>
 
 <script setup lang="ts">
+import { resolve } from 'path-browserify'
 import type { RouteRecordRaw } from "vue-router";
 
-const props = defineProps<{ item: RouteRecordRaw }>()
+const props = defineProps<{
+  item: RouteRecordRaw,
+  basePath: string
+}>()
 
 const onlyOneChild = ref<RouteRecordRaw | null>(null)
 
@@ -53,6 +64,11 @@ const methods = {
       default:
         return false
     }
+  },
+
+  resolvePath(path: string): string {
+    return resolve(props.basePath, path)
   }
+
 }
 </script>
