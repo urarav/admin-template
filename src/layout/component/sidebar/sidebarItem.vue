@@ -22,10 +22,10 @@
       </template>
 
       <sidebar-item
-          :item="it"
-          v-for="it in item.children"
-          :key="it.path"
-          :base-path="methods.resolvePath(it.path)"
+        :item="it"
+        v-for="it in item.children"
+        :key="it.path"
+        :base-path="methods.resolvePath(it.path)"
       />
     </el-sub-menu>
   </div>
@@ -33,25 +33,26 @@
 
 <script setup lang="ts">
 import { resolve } from 'path-browserify'
-import type { RouteRecordRaw } from "vue-router";
+import type { RouteRecordRaw } from 'vue-router'
 
 const props = defineProps<{
-  item: RouteRecordRaw,
+  item: RouteRecordRaw
   basePath: string
 }>()
 
 const onlyOneChild = ref<RouteRecordRaw | null>(null)
 
-const isMenuItem = computed(() =>
-    methods.hasOnlyOneChild(props.item.children, props.item)
-    && !props.item.alwaysShow
-    && onlyOneChild.value
-    && (onlyOneChild.value.noDisplayChildren || !onlyOneChild.value.children)
+const isMenuItem = computed(
+  () =>
+    methods.hasOnlyOneChild(props.item.children, props.item) &&
+    !props.item.alwaysShow &&
+    onlyOneChild.value &&
+    (onlyOneChild.value.noDisplayChildren || !onlyOneChild.value.children)
 )
 
 const methods = {
   hasOnlyOneChild(children: RouteRecordRaw[] | undefined = [], parent: RouteRecordRaw): boolean {
-    const displayChildren = children.filter(it => !it.hidden)
+    const displayChildren = children.filter((it) => !it.hidden)
     const conditionalLength = displayChildren.length
 
     switch (conditionalLength) {
@@ -69,6 +70,5 @@ const methods = {
   resolvePath(path: string): string {
     return resolve(props.basePath, path)
   }
-
 }
 </script>

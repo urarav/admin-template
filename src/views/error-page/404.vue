@@ -1,13 +1,7 @@
 <template>
-  <div>
-    404 Page
-  </div>
+  <div>404 Page</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

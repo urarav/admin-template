@@ -1,13 +1,7 @@
 <template>
-  <div>
-    Test Page
-  </div>
+  <div>Test Page</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
