@@ -2,17 +2,18 @@
   <div>
     <el-scrollbar>
       <el-menu
-        active-text-color="#ffd04b"
-        background-color="#545c64"
-        class="el-menu-vertical-demo"
-        default-active="2"
-        text-color="#fff"
+          :background-color="globalVariables.menuBg"
+          :text-color="globalVariables.menuText"
+          :active-text-color="globalVariables.menuActiveText"
+          :unique-opened="false"
+          :collapse-transition="false"
+          mode="vertical"
       >
         <sidebar-item
-          v-for="route in routes"
-          :key="route.path"
-          :item="route"
-          :base-path="route.path"
+            v-for="route in routes"
+            :key="route.path"
+            :item="route"
+            :base-path="route.path"
         />
       </el-menu>
     </el-scrollbar>
@@ -26,8 +27,9 @@ import SidebarItem from '@/layout/component/sidebar/sidebarItem.vue'
 
 import type { RouteRecordRaw } from 'vue-router'
 
-console.log(variables)
 const routes: RouteRecordRaw[] = accessRoutes
+
+const globalVariables = computed<any>(() => variables)
 </script>
 
 <style scoped></style>

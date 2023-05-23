@@ -1,16 +1,16 @@
 @import 'sidebar';
 @import 'navbar';
 
-#app {
+.layout {
   height: 100vh;
   display: flex;
 
-  .app-sidebar {
+  .layout-sidebar {
     width: $sideBarWidth;
     background-color: $menuBg;
   }
 
-  .app-main {
+  .layout-main {
     flex: 1;
     display: flex;
     flex-direction: column;

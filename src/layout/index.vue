@@ -1,10 +1,11 @@
 <template>
-  <sidebar class="app-sidebar" />
-
-  <section class="app-main">
-    <navbar class="app-main__navbar" />
-    <app-content class="app-main__content" />
-  </section>
+  <div class="layout">
+    <sidebar class="layout-sidebar" />
+    <section class="layout-main">
+      <navbar class="layout-main__navbar" />
+      <app-content class="layout-main__content" />
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

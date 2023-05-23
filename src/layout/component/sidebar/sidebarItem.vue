@@ -22,10 +22,10 @@
       </template>
 
       <sidebar-item
-        :item="it"
-        v-for="it in item.children"
-        :key="it.path"
-        :base-path="methods.resolvePath(it.path)"
+          :item="it"
+          v-for="it in item.children"
+          :key="it.path"
+          :base-path="methods.resolvePath(it.path)"
       />
     </el-sub-menu>
   </div>
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { resolve } from 'path-browserify'
 import type { RouteRecordRaw } from 'vue-router'
+import { isExternal } from "@/utils/validate";
 
 const props = defineProps<{
   item: RouteRecordRaw
@@ -43,11 +44,11 @@ const props = defineProps<{
 const onlyOneChild = ref<RouteRecordRaw | null>(null)
 
 const isMenuItem = computed(
-  () =>
-    methods.hasOnlyOneChild(props.item.children, props.item) &&
-    !props.item.alwaysShow &&
-    onlyOneChild.value &&
-    (onlyOneChild.value.noDisplayChildren || !onlyOneChild.value.children)
+    () =>
+        methods.hasOnlyOneChild(props.item.children, props.item) &&
+        !props.item.alwaysShow &&
+        onlyOneChild.value &&
+        (onlyOneChild.value.noDisplayChildren || !onlyOneChild.value.children)
 )
 
 const methods = {
@@ -68,7 +69,10 @@ const methods = {
   },
 
   resolvePath(path: string): string {
-    return resolve(props.basePath, path)
+    const { basePath } = props
+    if (isExternal(path)) return path
+    if (isExternal(basePath)) return basePath
+    return resolve(basePath, path)
   }
 }
 </script>
