@@ -1,6 +1,14 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, CreateAxiosDefaults } from 'axios'
+import axios, {
+    AxiosError,
+    AxiosInstance,
+    AxiosRequestConfig,
+    AxiosResponse,
+    CreateAxiosDefaults,
+    InternalAxiosRequestConfig
+} from 'axios'
 import { ElMessage, ElMessageBox } from "element-plus";
 import type { ResponseResult } from "#/network";
+import useUserStore from "@/stores/modules/user";
 
 export class Request {
     private instance: AxiosInstance;
@@ -16,7 +24,14 @@ export class Request {
     }
 
     private useRequestInterceptor(): void {
-        this.instance.interceptors.request.use()
+        this.instance.interceptors.request.use(
+            (config: InternalAxiosRequestConfig) => {
+                const token = useUserStore().token
+                token && (config.headers.Authorization = token)
+                return config
+            },
+            (error: AxiosError) => Promise.reject(error)
+        )
     }
 
     private useResponseInterceptor(): void {
@@ -53,15 +68,15 @@ export class Request {
         )
     }
 
-    private request<T = any>(config: AxiosRequestConfig): Promise<ResponseResult<T>> {
+    public request<T = any>(config: AxiosRequestConfig): Promise<ResponseResult<T>> {
         return this.instance.request<any, ResponseResult<T>>(config)
     }
 
-    private get<T = any>(url: string, config?: AxiosRequestConfig): Promise<ResponseResult<T>> {
+    public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<ResponseResult<T>> {
         return this.instance.get<any, ResponseResult<T>>(url, config)
     }
 
-    private post<T = any>(url: string, data: any, config?: AxiosRequestConfig): Promise<ResponseResult<T>> {
+    public post<T = any>(url: string, data: any, config?: AxiosRequestConfig): Promise<ResponseResult<T>> {
         return this.instance.post<any, ResponseResult<T>>(url, data, config)
     }
 

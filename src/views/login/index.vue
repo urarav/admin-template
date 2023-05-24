@@ -25,6 +25,8 @@ import type { FormRules } from "element-plus";
 import type { ToRefs } from "vue";
 import { ElForm } from "element-plus";
 import { login } from "@/api/user";
+import useUserStore from "@/stores/modules/user";
+import { useRouter } from "vue-router";
 
 interface ILoginPageState {
   loginForm: {
@@ -46,18 +48,23 @@ const { loginFormRules, loginForm }: ToRefs<ILoginPageState> = toRefs(reactive({
 }))
 
 const loginFormRef = ref<InstanceType<typeof ElForm> | null>(null)
-
+const userStore = useUserStore()
+const router = useRouter()
+const { query } = useRoute()
 const methods = {
   async onSubmitLoginForm() {
     try {
       await loginFormRef.value?.validate()
       const { data, code } = await login<{ token: string }>(loginForm.value)
-      if (code === 200) {
+      if (code === 200 && data) {
         const { token } = data
-        console.log(token)
+        userStore.setToken(token)
+        await router.push({
+          path: query.redirect as string
+        })
       }
     } catch (e) {
-      console.warn('login-form validate failed.')
+      console.warn('login-form failed.')
     }
   }
 }

@@ -1,9 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-type TPermissionState = Record<
-  'constantRoutes' | 'asyncRoutes' | 'accessRoutes',
-  'routes',
-  RouteRecordRaw[]
->
+interface IPermissionState {
+    routes: RouteRecordRaw[]
+}
 
-export type { TPermissionState }
+export type { IPermissionState }
