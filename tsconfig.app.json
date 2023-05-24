@@ -21,7 +21,6 @@
     "moduleResolution": "Node",
     "types": [
       "element-plus/global",
-      "node"
     ]
   }
 }

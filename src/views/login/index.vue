@@ -24,6 +24,7 @@
 import type { FormRules } from "element-plus";
 import type { ToRefs } from "vue";
 import { ElForm } from "element-plus";
+import { login } from "@/api/user";
 
 interface ILoginPageState {
   loginForm: {
@@ -50,7 +51,11 @@ const methods = {
   async onSubmitLoginForm() {
     try {
       await loginFormRef.value?.validate()
-
+      const { data, code } = await login<{ token: string }>(loginForm.value)
+      if (code === 200) {
+        const { token } = data
+        console.log(token)
+      }
     } catch (e) {
       console.warn('login-form validate failed.')
     }

@@ -8,7 +8,7 @@ router.beforeEach((to, from, next) => {
         if (to.path === './login') {
             next('/')
         } else {
-
+            console.log(1)
         }
     } else {
         if (whiteList.includes(to.path)) next()
