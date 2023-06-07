@@ -27,7 +27,7 @@ export class Request {
         this.instance.interceptors.request.use(
             (config: InternalAxiosRequestConfig) => {
                 const token = useUserStore().token
-                token && (config.headers.Authorization = token)
+                token && (config.headers.Authorization = `Bearer ${token}`)
                 return config
             },
             (error: AxiosError) => Promise.reject(error)
@@ -37,14 +37,14 @@ export class Request {
     private useResponseInterceptor(): void {
         this.instance.interceptors.response.use(
             async (response: AxiosResponse<ResponseResult>): Promise<ResponseResult> => {
-                const { data: { code, message } } = response
-                if (code !== 200) {
+                const { data: { statusCode, message } } = response
+                if (statusCode !== 200) {
                     ElMessage({
                         message: message ?? 'Error',
                         type: 'error',
                         duration: 5 * 1000
                     })
-                    if (code === 401) {
+                    if (statusCode === 401) {
                         await ElMessageBox.confirm('您已注销，您可以选择取消继续留在此页面或者重新登录', '退出登录确认', {
                             confirmButtonText: '重新登录',
                             cancelButtonText: '取消',

@@ -55,10 +55,9 @@ const methods = {
   async onSubmitLoginForm() {
     try {
       await loginFormRef.value?.validate()
-      const { data, code } = await login<{ token: string }>(loginForm.value)
-      if (code === 200 && data) {
-        const { token } = data
-        userStore.setToken(token)
+      const { data, statusCode } = await login<string>(loginForm.value)
+      if (statusCode === 200 && data) {
+        userStore.setToken(data)
         await router.push({
           path: query.redirect as string
         })

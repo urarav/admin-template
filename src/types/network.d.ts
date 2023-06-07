@@ -4,8 +4,9 @@ import type {
 
 export interface ResponseResult<T = any> {
     data: T,
-    code: number
-    message?: string,
+    statusCode: number
+    message: string,
+    success: boolean,
 }
 
 

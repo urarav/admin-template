@@ -17,8 +17,8 @@ const useUserStore = defineStore('user', {
             this.token = token
         },
         async getUserInfo(): Promise<string[]> {
-            const { data, code } = await getUserInfo<IUserState>()
-            if (code === 200 && data) {
+            const { data, statusCode } = await getUserInfo<IUserState>()
+            if (statusCode === 200 && data) {
                 const { name, avatar, roles } = data
                 if (Array.isArray(roles) && roles.length) {
                     this.$patch({
