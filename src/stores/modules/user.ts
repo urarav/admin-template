@@ -1,5 +1,5 @@
 import type { IUserState } from "#/store/user";
-import { getToken, setToken } from "@/utils/cookie";
+import { getToken, removeToken, setToken } from "@/utils/cookie";
 import { getUserInfo } from "@/api/user";
 
 const useUserStore = defineStore('user', {
@@ -15,6 +15,13 @@ const useUserStore = defineStore('user', {
         setToken(token: string): void {
             setToken(token)
             this.token = token
+        },
+        resetToken() {
+            this.$patch({
+                token: '',
+                roles: [],
+            })
+            removeToken()
         },
         async getUserInfo(): Promise<string[]> {
             const { data, statusCode } = await getUserInfo<IUserState>()
@@ -34,7 +41,6 @@ const useUserStore = defineStore('user', {
                 throw new Error('request error occurred in api:getUserInfo.')
             }
         }
-
     }
 })
 

@@ -1,13 +1,16 @@
 <template>
-  <div v-if="!item.hidden">
+  <template v-if="!item.hidden">
     <template v-if="isMenuItem">
       <template v-if="onlyOneChild && onlyOneChild.meta">
         <navigate-link :to="methods.resolvePath(onlyOneChild.path)">
           <el-menu-item :index="methods.resolvePath(onlyOneChild.path)">
-            <el-icon>
-              <i-ep-setting />
-            </el-icon>
-            <span>{{ onlyOneChild.meta?.title }}</span>
+            <svg-icon :icon-class="onlyOneChild.meta.icon">
+              <i-ep-location />
+            </svg-icon>
+
+            <template #title>
+              <span>{{ onlyOneChild.meta?.title }}</span>
+            </template>
           </el-menu-item>
         </navigate-link>
       </template>
@@ -15,9 +18,7 @@
 
     <el-sub-menu v-else :index="item.path">
       <template #title>
-        <el-icon>
-          <i-ep-location />
-        </el-icon>
+        <svg-icon icon-class="nested"></svg-icon>
         <span v-if="item.meta">{{ item.meta.title }}</span>
       </template>
 
@@ -28,7 +29,7 @@
           :base-path="methods.resolvePath(it.path)"
       />
     </el-sub-menu>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">

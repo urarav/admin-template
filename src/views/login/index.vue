@@ -9,10 +9,22 @@
         label-position="top"
     >
       <el-form-item prop="username" class="login-form__item" label="用户名">
-        <el-input placeholder="请输入用户名" clearable v-model="loginForm.username" />
+        <el-input
+            @keyup.enter="methods.onSubmitLoginForm"
+            placeholder="请输入用户名"
+            clearable
+            v-model="loginForm.username"
+        />
       </el-form-item>
       <el-form-item prop="password" class="login-form__item" label="密码">
-        <el-input placeholder="请输入密码" clearable type="password" show-password v-model="loginForm.password" />
+        <el-input
+            @keyup.enter="methods.onSubmitLoginForm"
+            placeholder="请输入密码"
+            clearable
+            type="password"
+            show-password
+            v-model="loginForm.password"
+        />
       </el-form-item>
       <el-button class="login-form__btn" type="primary" @click="methods.onSubmitLoginForm">登录</el-button>
     </el-form>

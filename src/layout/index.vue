@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <sidebar class="layout-sidebar" />
+    <sidebar :class="{'is-collapse': isCollapse}" class="layout-sidebar" />
     <section class="layout-main">
       <navbar class="layout-main__navbar" />
       <app-content class="layout-main__content" />
@@ -8,4 +8,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+import useAppStore from "@/stores/modules/app";
+
+const isCollapse = computed(() => !useAppStore().sidebar.opened)
+</script>

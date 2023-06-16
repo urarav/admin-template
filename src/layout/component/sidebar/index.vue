@@ -5,6 +5,7 @@
           :background-color="globalVariables.menuBg"
           :text-color="globalVariables.menuText"
           :active-text-color="globalVariables.menuActiveText"
+          :collapse="!sidebar.opened"
           :unique-opened="false"
           :collapse-transition="false"
           mode="vertical"
@@ -21,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import useAppStore from "@/stores/modules/app";
 import { routes as accessRoutes } from '@/router'
 import variables from '@/styles/exportVariables.module.scss'
 import SidebarItem from '@/layout/component/sidebar/sidebarItem.vue'
@@ -30,6 +32,7 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = accessRoutes
 
 const globalVariables = computed<any>(() => variables)
+const { sidebar } = useAppStore()
 </script>
 
 <style scoped></style>

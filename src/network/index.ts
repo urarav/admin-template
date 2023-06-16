@@ -50,7 +50,8 @@ export class Request {
                             cancelButtonText: '取消',
                             type: 'warning'
                         })
-                        // TODO
+                        useUserStore().resetToken()
+                        location.reload()
                     }
                     return Promise.resolve(response.data)
                 } else {

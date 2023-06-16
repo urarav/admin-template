@@ -10,6 +10,9 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": "./src",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "paths": {
       "@/*": [
         "./*"
@@ -20,7 +23,7 @@
     },
     "moduleResolution": "Node",
     "types": [
-      "element-plus/global",
+      "element-plus/global"
     ]
   }
 }

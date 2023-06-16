@@ -6,8 +6,17 @@
   display: flex;
 
   .layout-sidebar {
-    width: $sideBarWidth;
+    width: $sideBarWidthExpand;
     background-color: $menuBg;
+    transition: width .25s ease-in-out;
+
+    &.is-collapse {
+      width: $sideBarWidthFold;
+    }
+
+    .el-menu {
+      border-right: none;
+    }
   }
 
   .layout-main {
@@ -18,6 +27,9 @@
     &__navbar {
       height: $navBarHeight;
       background-color: $green;
+      display: flex;
+      align-items: center;
+      padding: 12px;
     }
 
     &__content {

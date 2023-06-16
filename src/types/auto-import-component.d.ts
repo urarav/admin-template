@@ -20,6 +20,9 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    Icons: typeof import('./../views/icons/index.vue')['default']
+    IEpExpand: typeof import('~icons/ep/expand')['default']
+    IEpFold: typeof import('~icons/ep/fold')['default']
     IEpLocation: typeof import('~icons/ep/location')['default']
     IEpSetting: typeof import('~icons/ep/setting')['default']
     Layout: typeof import('./../layout/index.vue')['default']
@@ -30,6 +33,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./../layout/component/sidebar/index.vue')['default']
     SidebarItem: typeof import('./../layout/component/sidebar/sidebarItem.vue')['default']
-    Test: typeof import('./../views/test/index.vue')['default']
+    SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
+    Test: typeof import('./../components/Test/index.vue')['default']
   }
 }

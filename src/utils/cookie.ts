@@ -10,8 +10,8 @@ function setToken(value: string): void {
     Cookies.set(TokenKey, value)
 }
 
-function removeToken(key: string): void {
-    Cookies.remove(key)
+function removeToken(): void {
+    Cookies.remove(TokenKey)
 }
 
 export { getToken, setToken, removeToken }

@@ -2,292 +2,70 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 
 const Layout = () => import('@/layout/index.vue')
 const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    redirect: '/dashboard'
-  },
-  {
-    path: '/login',
-    component: () => import('@/views/login/index.vue')
-  },
-  {
-    path: '/dashboard',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
-        meta: {
-          title: 'Dashboard'
-        }
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
+    {
+        path: '/',
+        redirect: '/dashboard'
     },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
+    {
+        path: '/login',
+        component: () => import('@/views/login/index.vue')
     },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
+    {
+        path: '/dashboard',
+        component: Layout,
+        children: [
+            {
+                path: 'index',
+                component: () => import('@/views/dashboard/index.vue'),
+                meta: {
+                    title: 'Dashboard',
+                    icon: 'dashboard'
+                }
+            }
+        ]
     },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
+    {
+        path: '/test',
+        component: Layout,
         meta: {
-          title: 'Nested-1'
+            title: 'Test',
+            icon: 'star'
         },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
+        children: [
+            {
+                path: 'index1',
+                component: () => import('@/views/test/index.vue'),
+                meta: {
+                    title: 'Nested-1',
+                    icon: 'wechat'
+                },
+                children: []
+            }
+        ]
     },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
+    {
+        path: '/icons',
+        component: Layout,
+        children: [
+            {
+                path: 'index',
+                component: () => import('@/views/icons/index.vue'),
+                meta: {
+                    title: 'Icons',
+                    icon: 'icon'
+                },
+            }
+        ]
     },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-
-  {
-    path: '/test',
-    component: Layout,
-    meta: {
-      title: 'Test'
-    },
-    children: [
-      {
-        path: 'index1',
-        component: () => import('@/views/test/index.vue'),
-        meta: {
-          title: 'Nested-1'
-        },
-        children: []
-      }
-    ]
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    component: () => import('@/views/error-page/404.vue')
-  }
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/views/error-page/404.vue')
+    }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+    history: createWebHashHistory(),
+    routes
 })
 
 export default router
