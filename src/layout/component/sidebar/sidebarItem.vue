@@ -4,9 +4,7 @@
       <template v-if="onlyOneChild && onlyOneChild.meta">
         <navigate-link :to="methods.resolvePath(onlyOneChild.path)">
           <el-menu-item :index="methods.resolvePath(onlyOneChild.path)">
-            <svg-icon :icon-class="onlyOneChild.meta.icon">
-              <i-ep-location />
-            </svg-icon>
+            <svg-icon :icon-class="onlyOneChild.meta.icon" />
 
             <template #title>
               <span>{{ onlyOneChild.meta?.title }}</span>
@@ -18,7 +16,7 @@
 
     <el-sub-menu v-else :index="item.path">
       <template #title>
-        <svg-icon icon-class="nested"></svg-icon>
+        <svg-icon :icon-class="item.meta?.icon"></svg-icon>
         <span v-if="item.meta">{{ item.meta.title }}</span>
       </template>
 

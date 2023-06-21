@@ -4,6 +4,7 @@
       <i-ep-fold v-show="sidebar.opened" />
       <i-ep-expand v-show="!sidebar.opened" />
     </el-icon>
+    <breadcrumb />
   </div>
 </template>
 

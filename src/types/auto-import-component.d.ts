@@ -11,7 +11,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     404: typeof import('./../views/error-page/404.vue')['default']
     AppContent: typeof import('./../layout/component/AppContent.vue')['default']
+    Breadcrumb: typeof import('./../components/Breadcrumb/index.vue')['default']
     Dashboard: typeof import('./../views/dashboard/index.vue')['default']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -31,6 +34,7 @@ declare module '@vue/runtime-core' {
     NavigateLink: typeof import('./../layout/component/sidebar/NavigateLink.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Setting: typeof import('./../layout/component/setting/index.vue')['default']
     Sidebar: typeof import('./../layout/component/sidebar/index.vue')['default']
     SidebarItem: typeof import('./../layout/component/sidebar/sidebarItem.vue')['default']
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
