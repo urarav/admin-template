@@ -3,6 +3,7 @@
     <sidebar :class="{'is-collapse': isCollapse}" class="layout-sidebar" />
     <section class="layout-main">
       <navbar class="layout-main__navbar" />
+      <tags-view />
       <app-content class="layout-main__content" />
     </section>
   </div>

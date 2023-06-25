@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 
 const Layout = () => import('@/layout/index.vue')
-const routes: RouteRecordRaw[] = [
+const constantRoutes: RouteRecordRaw[] = [
     {
         path: '/',
         redirect: '/dashboard'
@@ -26,6 +26,9 @@ const routes: RouteRecordRaw[] = [
             }
         ]
     },
+]
+
+const asyncRoutes: RouteRecordRaw[] = [
     {
         path: '/test',
         component: Layout,
@@ -33,10 +36,10 @@ const routes: RouteRecordRaw[] = [
             title: 'Test',
             icon: 'star'
         },
-        redirect: '/test/index1',
+        redirect: '/test/index',
         children: [
             {
-                path: 'index1',
+                path: 'index',
                 component: () => import('@/views/test/index.vue'),
                 meta: {
                     title: 'Nested-1',
@@ -49,6 +52,7 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/icons',
         component: Layout,
+        redirect: '/icons/index',
         children: [
             {
                 path: 'index',
@@ -66,10 +70,11 @@ const routes: RouteRecordRaw[] = [
     }
 ]
 
+
 const router = createRouter({
     history: createWebHashHistory(),
-    routes
+    routes: constantRoutes
 })
 
 export default router
-export { routes }
+export { asyncRoutes, constantRoutes }

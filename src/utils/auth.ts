@@ -16,8 +16,9 @@ router.beforeEach(async (to, from, next) => {
             } else {
                 try {
                     const roles = await getUserInfo()
-                    usePermissionStore().generateRoutes(roles)
-                    next()
+                    const accessRoutes = usePermissionStore().generateRoutes(roles)
+                    accessRoutes.forEach(route => router.addRoute(route))
+                    next({ ...to, replace: true })
                 } catch (e) {
                     console.warn(e)
                 }
