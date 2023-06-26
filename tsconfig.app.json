@@ -8,6 +8,7 @@
     "src/**/__tests__/*"
   ],
   "compilerOptions": {
+    "target": "ESNext",
     "composite": true,
     "baseUrl": "./src",
     "jsx": "preserve",

@@ -46,7 +46,7 @@ const asyncRoutes: RouteRecordRaw[] = [
                     icon: 'wechat'
                 },
                 children: []
-            }
+            },
         ]
     },
     {

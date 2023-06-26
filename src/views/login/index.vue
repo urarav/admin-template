@@ -34,7 +34,7 @@
 <script setup lang="ts">
 
 import type { FormRules } from "element-plus";
-import type { ToRefs } from "vue";
+import type { Ref, ToRefs } from "vue";
 import { ElForm } from "element-plus";
 import { login } from "@/api/user";
 import useUserStore from "@/stores/modules/user";
@@ -48,7 +48,7 @@ interface ILoginPageState {
   loginFormRules: FormRules,
 }
 
-const { loginFormRules, loginForm }: ToRefs<ILoginPageState> = toRefs(reactive({
+const { loginFormRules, loginForm } = toRefs<ILoginPageState>(reactive({
   loginForm: {
     username: null,
     password: null

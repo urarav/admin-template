@@ -1,9 +1,8 @@
 import type { RouteRecordRaw } from "vue-router";
-import type { IPermissionState } from "#/store/permission";
 import { asyncRoutes, constantRoutes } from "@/router";
 
 const usePermissionStore = defineStore('permission', {
-    state: (): IPermissionState => {
+    state: (): { routes: RouteRecordRaw[] } => {
         return {
             routes: []
         }
@@ -40,6 +39,9 @@ const usePermissionStore = defineStore('permission', {
             this.routes = constantRoutes.concat(accessRoutes)
             return accessRoutes
         }
+    },
+    getters: {
+        routeList: (state) => state.routes
     }
 })
 
