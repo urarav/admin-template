@@ -38,6 +38,7 @@ declare module '@vue/runtime-core' {
     Setting: typeof import('./../layout/component/setting/index.vue')['default']
     Sidebar: typeof import('./../layout/component/sidebar/index.vue')['default']
     SidebarItem: typeof import('./../layout/component/sidebar/sidebarItem.vue')['default']
+    SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
     TagsView: typeof import('./../layout/component/tagsView/index.vue')['default']
     Test: typeof import('./../components/Test/index.vue')['default']
   }

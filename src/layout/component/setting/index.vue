@@ -14,10 +14,28 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { useCurrentInstance } from "@/hooks/useCurrentInstance";
+
+const props = defineProps<{
+  clickNotClose?: boolean
   buttonTop?: number
 }>()
 const show = ref(false)
+watch(show, (val) => {
+  if (val && !props.clickNotClose) {
+    document.addEventListener('click', closeRightPanel)
+  }
+})
+const closeRightPanel = (event: MouseEvent) => {
+  const parent = (event.target as HTMLElement).closest('.right-panel__body')
+  if (!parent) {
+    show.value = false
+    document.removeEventListener('click', closeRightPanel)
+  }
+}
+const { vc } = useCurrentInstance()
+onMounted(() => void document.body.firstChild.before(vc?.$el))
+onUnmounted(() => void vc?.$el.remove())
 </script>
 
 <style scoped lang="scss">
@@ -38,6 +56,7 @@ const show = ref(false)
     transform: translate(100%);
     transition: all .25s cubic-bezier(.7, .3, .1, 1);
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, .05);
+    z-index: 1000;
 
     &-btn {
       position: absolute;
@@ -56,7 +75,6 @@ const show = ref(false)
   &.is-show {
     .right-panel__body {
       transform: translate(0);
-      z-index: 1000;
     }
 
     .right-panel__background {

@@ -37,6 +37,7 @@ objectIsNotEmpty(iconModules) && (iconList.value = Object.keys(iconModules).map(
     > .el-icon {
       transform-style: preserve-3d;
       transition: all ease 1s;
+      z-index: 1;
     }
 
     &:hover {
