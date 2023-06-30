@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -24,6 +25,7 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Icons: typeof import('./../views/icons/index.vue')['default']
     IEpClose: typeof import('~icons/ep/close')['default']
     IEpExpand: typeof import('~icons/ep/expand')['default']
@@ -33,6 +35,7 @@ declare module '@vue/runtime-core' {
     Login: typeof import('./../views/login/index.vue')['default']
     Navbar: typeof import('./../layout/component/navbar/index.vue')['default']
     NavigateLink: typeof import('./../layout/component/sidebar/NavigateLink.vue')['default']
+    RightPanel: typeof import('./../components/RightPanel/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Setting: typeof import('./../layout/component/setting/index.vue')['default']
@@ -41,5 +44,6 @@ declare module '@vue/runtime-core' {
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
     TagsView: typeof import('./../layout/component/tagsView/index.vue')['default']
     Test: typeof import('./../components/Test/index.vue')['default']
+    ThemePicker: typeof import('./../components/ThemePicker/index.vue')['default']
   }
 }

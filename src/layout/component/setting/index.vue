@@ -1,86 +1,82 @@
 <template>
-  <div class="right-panel" :class="{'is-show': show}">
-    <section class="right-panel__background"></section>
-    <section class="right-panel__body">
-      <svg-icon @click="show = !show" class="right-panel__body-btn" :style="{top: `${buttonTop ?? 250}px`}">
-        <i-ep-close v-show="show" />
-        <i-ep-setting v-show="!show" />
-      </svg-icon>
-      <slot>
-        <el-empty />
-      </slot>
-    </section>
+  <div class="drawer">
+    <h3 class="drawer-title">Page style setting</h3>
+    <ul role="list" class="drawer-list">
+      <li class="drawer-list__item">
+        <span>Theme Color</span>
+        <theme-picker @click="onClick" />
+      </li>
+      <li class="drawer-list__item">
+        <span>Open Tags-View</span>
+        <el-switch v-model="tagsView" class="drawer-list__item-switch" />
+      </li>
+      <li class="drawer-list__item">
+        <span>Fixed Header</span>
+        <el-switch v-model="fixedHeader" class="drawer-list__item-switch" />
+      </li>
+      <li class="drawer-list__item">
+        <span>Sidebar Logo</span>
+        <el-switch v-model="sidebarLogo" class="drawer-list__item-switch" />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useCurrentInstance } from "@/hooks/useCurrentInstance";
+import useSettingStore from "@/stores/modules/settings";
 
-const props = defineProps<{
-  clickNotClose?: boolean
-  buttonTop?: number
-}>()
-const show = ref(false)
-watch(show, (val) => {
-  if (val && !props.clickNotClose) {
-    document.addEventListener('click', closeRightPanel)
+const onClick = () => {
+  console.log(1)
+}
+const settingStore = useSettingStore()
+const tagsView = computed({
+  get() {
+    return settingStore.tagsView
+  },
+  set(val) {
+    settingStore.changeSetting('tagsView', val)
   }
 })
-const closeRightPanel = (event: MouseEvent) => {
-  const parent = (event.target as HTMLElement).closest('.right-panel__body')
-  if (!parent) {
-    show.value = false
-    document.removeEventListener('click', closeRightPanel)
+const fixedHeader = computed({
+  get() {
+    return settingStore.fixedHeader
+  },
+  set(val) {
+    settingStore.changeSetting('fixedHeader', val)
   }
-}
-const { vc } = useCurrentInstance()
-onMounted(() => void document.body.firstChild.before(vc?.$el))
-onUnmounted(() => void vc?.$el.remove())
+})
+const sidebarLogo = computed({
+  get() {
+    return settingStore.sidebarLogo
+  },
+  set(val) {
+    settingStore.changeSetting('sidebarLogo', val)
+  }
+})
 </script>
 
 <style scoped lang="scss">
-.right-panel {
-  &__background {
-    position: fixed;
-    z-index: -1;
-    transition: all .3s cubic-bezier(.7, .3, .1, 1);
+.drawer {
+  padding: 24px;
+  font-size: 14px;
+
+  &-title {
+    margin-bottom: 24px;
   }
 
-  &__body {
-    height: 100vh;
-    width: 260px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background: white;
-    transform: translate(100%);
-    transition: all .25s cubic-bezier(.7, .3, .1, 1);
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, .05);
-    z-index: 1000;
+  &-list {
+    margin: 0;
+    padding: 0;
 
-    &-btn {
-      position: absolute;
-      left: -48px;
-      width: 48px;
-      height: 48px;
-      border-radius: 6px 0 0 6px;
-      cursor: pointer;
-      color: #fff;
-      font-size: 24px;
-      background: #30b08f;
-      text-align: center;
-    }
-  }
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
 
-  &.is-show {
-    .right-panel__body {
-      transform: translate(0);
-    }
-
-    .right-panel__background {
-      z-index: 999;
-      inset: 0;
-      background: rgba(0, 0, 0, .2);
+      .el-switch {
+        height: auto;
+      }
     }
   }
 }
