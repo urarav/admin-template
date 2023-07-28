@@ -8,11 +8,14 @@
 </template>
 
 <script setup lang="ts">
-import { objectIsNotEmpty } from "@/utils";
+import { objectIsNotEmpty } from '@/utils'
 
 const iconList = ref<string[]>([])
 const iconModules = import.meta.glob('@/assets/icons/svg/*.svg')
-objectIsNotEmpty(iconModules) && (iconList.value = Object.keys(iconModules).map((path: string) => path.match(/\/([\w-]*)\.svg/)?.at(1)!))
+objectIsNotEmpty(iconModules) &&
+  (iconList.value = Object.keys(iconModules).map(
+    (path: string) => path.match(/\/([\w-]*)\.svg/)?.at(1)!
+  ))
 </script>
 
 <style scoped lang="scss">
@@ -32,7 +35,7 @@ objectIsNotEmpty(iconModules) && (iconList.value = Object.keys(iconModules).map(
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    transition: all ease .25s;
+    transition: all ease 0.25s;
 
     > .el-icon {
       transform-style: preserve-3d;
@@ -40,7 +43,7 @@ objectIsNotEmpty(iconModules) && (iconList.value = Object.keys(iconModules).map(
     }
 
     &:hover {
-      color: #409EFF;
+      color: #409eff;
 
       & > .el-icon {
         transform: rotateY(1turn);

@@ -8,7 +8,7 @@
   .layout-sidebar {
     width: $sideBarWidthExpand;
     background-color: $menuBg;
-    transition: width .25s ease-in-out;
+    transition: width 0.25s ease-in-out;
 
     &.is-collapse {
       width: $sideBarWidthFold;
@@ -29,7 +29,7 @@
       display: flex;
       align-items: center;
       padding: 12px;
-      border-bottom: #D4D7DE 1px solid;
+      border-bottom: #d4d7de 1px solid;
     }
 
     &__content {

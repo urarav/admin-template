@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 interface IPermissionState {
-    routes: RouteRecordRaw[]
+  routes: RouteRecordRaw[]
 }
 
 export type { IPermissionState }

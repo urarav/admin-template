@@ -1,13 +1,7 @@
 <template>
-  <div>
-    2222
-  </div>
+  <div>2222</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

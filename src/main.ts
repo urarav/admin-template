@@ -13,7 +13,7 @@ import 'virtual:svg-icons-register'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-import { installPublicComponents } from "@/components";
+import { installPublicComponents } from '@/components'
 
 const app = createApp(App)
 app.use(installPublicComponents)

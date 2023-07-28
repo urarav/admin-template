@@ -23,7 +23,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  backface-visibility: hidden
+  backface-visibility: hidden;
 }
 
 .front {

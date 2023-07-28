@@ -5,10 +5,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 <style scoped>
-.test{
+.test {
   width: 100px;
   height: 100px;
   background: aqua;

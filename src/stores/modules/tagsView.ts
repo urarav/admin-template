@@ -1,7 +1,7 @@
 const useTagsViewStore = defineStore('tagsView', {
-    state: () => ({
-        visitedViews: []
-    })
+  state: () => ({
+    visitedViews: []
+  })
 })
 
 export default useTagsViewStore

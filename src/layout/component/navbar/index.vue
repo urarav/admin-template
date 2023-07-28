@@ -9,10 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import useAppStore from "@/stores/modules/app";
+import useAppStore from '@/stores/modules/app'
 
 const { toggleSidebar, sidebar } = useAppStore()
-
 </script>
 
 <style scoped lang="scss">

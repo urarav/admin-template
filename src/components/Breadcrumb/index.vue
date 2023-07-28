@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import type { RouteLocationNormalizedLoaded } from "vue-router";
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 interface IMatchedItem {
-  title?: string,
-  path: string,
+  title?: string
+  path: string
 }
 
 const currentRoute = useRoute()
@@ -22,15 +22,19 @@ const isDashboard = ({ title }: IMatchedItem) => {
 
 const generateBreadcrumb = (route: RouteLocationNormalizedLoaded) => {
   return route.matched
-      .filter(({ meta }) => meta?.title && meta?.breadcrumb !== false)
-      .map(({ meta, path }) => ({ title: meta.title, path }))
+    .filter(({ meta }) => meta?.title && meta?.breadcrumb !== false)
+    .map(({ meta, path }) => ({ title: meta.title, path }))
 }
 
-watch(currentRoute, (route) => {
-  if (route.path.startsWith('/redirect/')) return
-  const matched = generateBreadcrumb(route)
-  const [firstEle] = matched
-  !isDashboard(firstEle) && (matched.unshift({ path: '/dashboard', title: 'Dashboard' }))
-  routeMatchedList.value = matched
-}, { immediate: true })
+watch(
+  currentRoute,
+  (route) => {
+    if (route.path.startsWith('/redirect/')) return
+    const matched = generateBreadcrumb(route)
+    const [firstEle] = matched
+    !isDashboard(firstEle) && matched.unshift({ path: '/dashboard', title: 'Dashboard' })
+    routeMatchedList.value = matched
+  },
+  { immediate: true }
+)
 </script>
