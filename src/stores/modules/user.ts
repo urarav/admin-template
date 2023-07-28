@@ -1,6 +1,12 @@
-import type { IUserState } from '#/store/user'
 import { getToken, removeToken, setToken } from '@/utils/cookie'
 import { getUserInfo } from '@/api/user'
+
+interface IUserState {
+  token: string | undefined
+  name: string | null
+  avatar?: string | null
+  roles: string[]
+}
 
 const useUserStore = defineStore('user', {
   state: (): IUserState => {

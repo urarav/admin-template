@@ -6,7 +6,6 @@ const publicComponentModules = import.meta.glob<any>(['./*/index.vue', './*/inde
 export function installPublicComponents(app: App) {
   for (const [path, module] of Object.entries(publicComponentModules)) {
     const [, componentName] = path.match(/\.\/(.*)\/.*\.(vue|tsx)/) ?? []
-    console.log(componentName)
     app.component(componentName, module.default)
   }
 }

@@ -9,7 +9,6 @@ import AutoImportComponent from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // https://vitejs.dev/config/
-
 export default defineConfig(({ command }) => {
   console.log(fileURLToPath(new URL('./src/assets/icons/svg', import.meta.url)))
   return {

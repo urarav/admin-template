@@ -5,9 +5,8 @@
         <navigate-link :to="methods.resolvePath(onlyOneChild.path)">
           <el-menu-item :index="methods.resolvePath(onlyOneChild.path)">
             <svg-icon :icon-class="onlyOneChild.meta.icon" />
-
             <template #title>
-              <span>{{ onlyOneChild.meta?.title }}</span>
+              <span>{{ onlyOneChild.meta.title }}</span>
             </template>
           </el-menu-item>
         </navigate-link>
@@ -40,27 +39,26 @@ const props = defineProps<{
   basePath: string
 }>()
 
-const onlyOneChild = ref<RouteRecordRaw | null>(null)
+const onlyOneChild = ref<RouteRecordRaw>()
 
 const isMenuItem = computed(
   () =>
-    methods.hasOnlyOneChild(props.item.children, props.item) &&
+    methods.hasOnlyOneChild(props.item.children ?? [], props.item) &&
     !props.item.alwaysShow &&
-    onlyOneChild.value &&
-    (onlyOneChild.value.noDisplayChildren || !onlyOneChild.value.children)
+    (onlyOneChild.value?.noDisplayChildren || !onlyOneChild.value?.children)
 )
 
 const methods = {
-  hasOnlyOneChild(children: RouteRecordRaw[] | undefined = [], parent: RouteRecordRaw): boolean {
+  hasOnlyOneChild(children: RouteRecordRaw[], parent: RouteRecordRaw): boolean {
     const displayChildren = children.filter((it) => !it.hidden)
     const conditionalLength = displayChildren.length
 
     switch (conditionalLength) {
       case 0:
-        onlyOneChild.value = { ...parent, path: '', noDisplayChildren: true }
+        onlyOneChild.value = { ...parent, path: '', noDisplayChildren: true } as RouteRecordRaw
         return true
       case 1:
-        onlyOneChild.value = displayChildren.at(0)!
+        onlyOneChild.value = displayChildren[0]
         return true
       default:
         return false

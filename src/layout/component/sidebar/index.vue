@@ -28,8 +28,7 @@ import SidebarItem from '@/layout/component/sidebar/sidebarItem.vue'
 
 import type { RouteRecordRaw } from 'vue-router'
 import usePermissionStore from '@/stores/modules/permission'
-
-const routes: RouteRecordRaw[] = usePermissionStore().routes
+const routes: RouteRecordRaw[] = usePermissionStore().routeList
 
 const globalVariables = computed<any>(() => variables)
 const { sidebar } = useAppStore()

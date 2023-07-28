@@ -1,4 +1,5 @@
-import axios, {
+import axios from 'axios'
+import type {
   AxiosError,
   AxiosInstance,
   AxiosRequestConfig,

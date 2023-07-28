@@ -1,4 +1,4 @@
-import type { _RouteRecordBase, RouteMeta } from 'vue-router'
+import 'vue-router'
 
 declare module 'vue-router' {
   interface _RouteRecordBase {
@@ -18,5 +18,3 @@ declare module 'vue-router' {
     activeMenu?: string
   }
 }
-
-export type { _RouteRecordBase, RouteMeta }

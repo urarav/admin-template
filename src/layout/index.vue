@@ -6,6 +6,9 @@
       <tags-view />
       <app-content class="layout-main__content" />
     </section>
+    <right-panel>
+      <setting />
+    </right-panel>
   </div>
 </template>
 

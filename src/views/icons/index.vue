@@ -14,7 +14,7 @@ const iconList = ref<string[]>([])
 const iconModules = import.meta.glob('@/assets/icons/svg/*.svg')
 objectIsNotEmpty(iconModules) &&
   (iconList.value = Object.keys(iconModules).map(
-    (path: string) => path.match(/\/([\w-]*)\.svg/)?.at(1)!
+    (path: string) => path.match(/\/([\w-]*)\.svg/)?.[1]
   ))
 </script>
 
@@ -40,6 +40,7 @@ objectIsNotEmpty(iconModules) &&
     > .el-icon {
       transform-style: preserve-3d;
       transition: all ease 1s;
+      z-index: 1;
     }
 
     &:hover {
